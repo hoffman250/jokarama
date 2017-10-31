@@ -64,7 +64,7 @@ public class JokeListFragment extends Fragment {
 
         @Override
         public void onClick(View view) {
-            Intent intent = new Intent(getActivity(), MainActivity.class);
+            Intent intent = MainActivity.newIntent(getActivity(), mJoke.getId());
             startActivity(intent);
         }
     }
