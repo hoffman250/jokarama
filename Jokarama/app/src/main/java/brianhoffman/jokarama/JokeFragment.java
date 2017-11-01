@@ -19,6 +19,11 @@ public class JokeFragment extends Fragment {
 
     private Joke mJoke;
     private TextView mNameField;
+    private TextView mLine1Field;
+    private TextView mLine2Field;
+    private TextView mLine3Field;
+    private TextView mLine4Field;
+    private TextView mLine5Field;
 
     public static JokeFragment newInstance(UUID jokeId) {
         Bundle args = new Bundle();
@@ -37,11 +42,27 @@ public class JokeFragment extends Fragment {
     }
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstancState) {
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View v = inflater.inflate(R.layout.fragment_joke, container, false);
 
         mNameField = (TextView)v.findViewById(R.id.joke_name);
-//        mNameField.setText(mJoke.getName());
+        mNameField.setText(mJoke.getName());
+
+        mLine1Field = (TextView)v.findViewById(R.id.joke_line_1);
+        mLine1Field.setText(mJoke.getLine1());
+
+        mLine2Field = (TextView)v.findViewById(R.id.joke_line_2);
+        mLine2Field.setText(mJoke.getLine2());
+
+        mLine3Field = (TextView)v.findViewById(R.id.joke_line_3);
+        mLine3Field.setText(mJoke.getLine3());
+
+        mLine4Field = (TextView)v.findViewById(R.id.joke_line_4);
+        mLine4Field.setText(mJoke.getLine4());
+
+        mLine5Field = (TextView)v.findViewById(R.id.joke_line_5);
+        mLine5Field.setText(mJoke.getLine5());
+
 
         return v;
     }

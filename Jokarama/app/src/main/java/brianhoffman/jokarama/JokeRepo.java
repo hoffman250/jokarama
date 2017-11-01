@@ -26,6 +26,11 @@ public class JokeRepo {
         for (int i = 0; i < 20; i++) {
             Joke joke = new Joke();
             joke.setName("Joke " + i);
+            joke.setLine1("Knock knock");
+            joke.setLine2("Who's there?");
+            joke.setLine3("Androidisa");
+            joke.setLine4("Androidisa who?");
+            joke.setLine5("Androidisa painintheass.");
             mJokes.add(joke);
         }
     }
