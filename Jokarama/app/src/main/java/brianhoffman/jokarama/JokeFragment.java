@@ -3,11 +3,14 @@ package brianhoffman.jokarama;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
 import java.util.UUID;
+
+import static brianhoffman.jokarama.R.layout.fragment_joke;
 
 /**
  * Created by brianhoffman on 10/30/17.
@@ -43,27 +46,41 @@ public class JokeFragment extends Fragment {
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        View v = inflater.inflate(R.layout.fragment_joke, container, false);
+        View v = inflater.inflate(fragment_joke, container, false);
 
         mNameField = (TextView)v.findViewById(R.id.joke_name);
         mNameField.setText(mJoke.getName());
 
         mLine1Field = (TextView)v.findViewById(R.id.joke_line_1);
-        mLine1Field.setText(mJoke.getLine1());
-
         mLine2Field = (TextView)v.findViewById(R.id.joke_line_2);
-        mLine2Field.setText(mJoke.getLine2());
-
         mLine3Field = (TextView)v.findViewById(R.id.joke_line_3);
-        mLine3Field.setText(mJoke.getLine3());
-
         mLine4Field = (TextView)v.findViewById(R.id.joke_line_4);
-        mLine4Field.setText(mJoke.getLine4());
-
         mLine5Field = (TextView)v.findViewById(R.id.joke_line_5);
-        mLine5Field.setText(mJoke.getLine5());
 
 
+        v.setOnClickListener(new View.OnClickListener() {
+            int click = 0;
+            @Override
+            public void onClick(View v) {
+                click++;
+                if (click == 1) {
+                    mLine1Field.setText(mJoke.getLine1());
+                }
+                else if (click == 2) {
+                    mLine2Field.setText(mJoke.getLine2());
+                }
+                else if (click == 3) {
+                    mLine3Field.setText(mJoke.getLine3());
+                }
+                else if (click == 4) {
+                    mLine4Field.setText(mJoke.getLine4());
+                }
+                else if (click == 5) {
+                    mLine5Field.setText(mJoke.getLine5());
+                }
+                else return;
+            }
+        });
         return v;
     }
 }
