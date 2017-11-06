@@ -6,6 +6,9 @@ import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
@@ -23,6 +26,12 @@ public class JokeListFragment extends Fragment {
     private JokeAdapter mAdapter;
 
     @Override
+    public void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setHasOptionsMenu(true);
+    }
+
+    @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_joke_list, container, false);
@@ -35,12 +44,34 @@ public class JokeListFragment extends Fragment {
         return view;
     }
 
+    @Override
+    public void onResume() {
+        super.onResume();
+        updateUI();
+    }
+
+    @Override
+    public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
+        super.onCreateOptionsMenu(menu, inflater);
+        inflater.inflate(R.menu.fragment_joke_list, menu);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case R.id.num_jokes:
+        }
+    }
+
     private void updateUI() {
         JokeRepo jokeRepo = JokeRepo.get(getActivity());
         List<Joke> jokes = jokeRepo.getJokes();
-
-        mAdapter = new JokeAdapter(jokes);
-        mJokeRecyclerView.setAdapter(mAdapter);
+        if (mAdapter == null) {
+            mAdapter = new JokeAdapter(jokes);
+            mJokeRecyclerView.setAdapter(mAdapter);
+        } else {
+            mAdapter.notifyDataSetChanged();
+        }
     }
 
     /*** JokeHolder class ***/
@@ -88,11 +119,19 @@ public class JokeListFragment extends Fragment {
         public void onBindViewHolder(JokeHolder holder, int position) {
             Joke joke = mJokes.get(position);
             holder.bind(joke);
+            //if joke.isComppletelyviewed
+                // holder.itemView.setBackgroundColor(dkfjhf);
         }
 
         @Override
         public int getItemCount() {
             return mJokes.size();
         }
+    }
+
+    private void updateNumJokes() {
+        JokeRepo jokeRepo = JokeRepo.get(getActivity());
+        int jokeCount = jokeRepo.getJokes().size();
+        String j
     }
 }

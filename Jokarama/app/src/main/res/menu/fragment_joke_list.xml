@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item
+        android:id="@=id/num_jokes"
+        android:title="@string/num_jokes" />
+
+    <item
+        android:id="@id/jokes_completed"
+        android:title="@string/jokes_completed" />
+
+</menu>

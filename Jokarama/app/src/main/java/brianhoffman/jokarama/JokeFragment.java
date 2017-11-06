@@ -77,6 +77,7 @@ public class JokeFragment extends Fragment {
                 }
                 else if (click == 5) {
                     mLine5Field.setText(mJoke.getLine5());
+                    //set mJoke.jokeCompletelyViewed = true;
                 }
                 else return;
             }

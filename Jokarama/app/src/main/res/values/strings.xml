@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">Jokarama</string>
+    <string name="num_jokes">jokes</string>
+    <string name="jokes_completed">completed</string>
 </resources>
