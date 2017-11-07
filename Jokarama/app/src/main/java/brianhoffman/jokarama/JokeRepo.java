@@ -14,8 +14,6 @@ public class JokeRepo {
     private static JokeRepo sJokeRepo;
     private List<Joke> mJokes;
 
-//    public int get number of jokes
-
     public static JokeRepo get(Context context) {
         if (sJokeRepo == null) {
             sJokeRepo = new JokeRepo(context);

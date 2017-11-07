@@ -3,6 +3,7 @@ package brianhoffman.jokarama;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -40,6 +41,7 @@ public class JokeListFragment extends Fragment {
         mJokeRecyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
 
         updateUI();
+        updateNumJokes();
 
         return view;
     }
@@ -56,11 +58,23 @@ public class JokeListFragment extends Fragment {
         inflater.inflate(R.menu.fragment_joke_list, menu);
     }
 
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        switch (item.getItemId()) {
-            case R.id.num_jokes:
-        }
+//
+//  * save this for reset star (page 260)
+//
+//    @Override
+//    public boolean onOptionsItemSelected(MenuItem item) {
+//        switch (item.getItemId()) {
+//            case R.id.xxxxx:
+//        }
+//    }
+
+    private void updateNumJokes() {
+        JokeRepo jokeRepo = JokeRepo.get(getActivity());
+        int jokeCount = jokeRepo.getJokes().size();
+        String numJokesSubtitle = String.format(getString(R.string.num_jokes_subtitle), jokeCount, 5);
+
+        AppCompatActivity activity = (AppCompatActivity) getActivity();
+        activity.getSupportActionBar().setSubtitle(numJokesSubtitle);
     }
 
     private void updateUI() {
@@ -72,6 +86,7 @@ public class JokeListFragment extends Fragment {
         } else {
             mAdapter.notifyDataSetChanged();
         }
+        updateNumJokes();
     }
 
     /*** JokeHolder class ***/
@@ -127,11 +142,5 @@ public class JokeListFragment extends Fragment {
         public int getItemCount() {
             return mJokes.size();
         }
-    }
-
-    private void updateNumJokes() {
-        JokeRepo jokeRepo = JokeRepo.get(getActivity());
-        int jokeCount = jokeRepo.getJokes().size();
-        String j
     }
 }
