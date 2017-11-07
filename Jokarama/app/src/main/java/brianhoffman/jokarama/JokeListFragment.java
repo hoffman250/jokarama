@@ -71,7 +71,7 @@ public class JokeListFragment extends Fragment {
     private void updateNumJokes() {
         JokeRepo jokeRepo = JokeRepo.get(getActivity());
         int jokeCount = jokeRepo.getJokes().size();
-        int jokesCompleted = 5;
+        int jokesCompleted = jokeRepo.getCompleted();
         String numJokesSubtitle = String.format(getString(R.string.num_jokes_subtitle), jokeCount, jokesCompleted);
 
         AppCompatActivity activity = (AppCompatActivity) getActivity();
@@ -135,8 +135,9 @@ public class JokeListFragment extends Fragment {
         public void onBindViewHolder(JokeHolder holder, int position) {
             Joke joke = mJokes.get(position);
             holder.bind(joke);
-            //if joke.isComppletelyviewed
-                // holder.itemView.setBackgroundColor(dkfjhf);
+            if (joke.isCompleted()) {
+                holder.itemView.setBackgroundColor(0xFF00FF00);
+            }
         }
 
         @Override

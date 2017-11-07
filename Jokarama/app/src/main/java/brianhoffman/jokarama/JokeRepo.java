@@ -47,4 +47,14 @@ public class JokeRepo {
         }
         return null;
     }
+
+    public int getCompleted() {
+        int count = 0;
+        for (Joke joke : mJokes) {
+            if (joke.isCompleted()) {
+                count++;
+            }
+        }
+        return count;
+    }
 }
