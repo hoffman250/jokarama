@@ -71,7 +71,8 @@ public class JokeListFragment extends Fragment {
     private void updateNumJokes() {
         JokeRepo jokeRepo = JokeRepo.get(getActivity());
         int jokeCount = jokeRepo.getJokes().size();
-        String numJokesSubtitle = String.format(getString(R.string.num_jokes_subtitle), jokeCount, 5);
+        int jokesCompleted = 5;
+        String numJokesSubtitle = String.format(getString(R.string.num_jokes_subtitle), jokeCount, jokesCompleted);
 
         AppCompatActivity activity = (AppCompatActivity) getActivity();
         activity.getSupportActionBar().setSubtitle(numJokesSubtitle);
