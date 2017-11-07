@@ -3,6 +3,6 @@
       xmlns:app="http://schemas.android.com/apk/res-auto">
     <item
         android:id="@+id/num_jokes"
-        android:title="@string/num_jokes" />
+        android:title="@string/num_jokes_subtitle" />
 
 </menu>

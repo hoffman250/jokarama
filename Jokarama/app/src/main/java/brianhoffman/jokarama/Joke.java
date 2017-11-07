@@ -14,6 +14,7 @@ public class Joke {
     private String mLine3;
     private String mLine4;
     private String mLine5;
+    private boolean completed;
 
     public Joke() {
         mId = UUID.randomUUID();
@@ -69,5 +70,13 @@ public class Joke {
 
     public void setLine5(String line5) {
         mLine5 = line5;
+    }
+
+    public boolean isCompleted() {
+        return completed;
+    }
+
+    public void setCompleted(boolean completed) {
+        this.completed = completed;
     }
 }
