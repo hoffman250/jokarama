@@ -57,4 +57,10 @@ public class JokeRepo {
         }
         return count;
     }
+
+    public void resetCompleted() {
+        for (Joke joke : mJokes) {
+            joke.setCompleted(false);
+        }
+    }
 }

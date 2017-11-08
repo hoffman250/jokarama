@@ -58,15 +58,25 @@ public class JokeListFragment extends Fragment {
         inflater.inflate(R.menu.fragment_joke_list, menu);
     }
 
-//
-//  * save this for reset star (page 260)
-//
-//    @Override
-//    public boolean onOptionsItemSelected(MenuItem item) {
-//        switch (item.getItemId()) {
-//            case R.id.xxxxx:
-//        }
-//    }
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case R.id.reset_jokes:
+                resetJokesCompleted();
+                updateUI();
+                return true;
+            default:
+                return super.onOptionsItemSelected(item);
+        }
+    }
+
+    private void resetJokesCompleted() {
+        JokeRepo jokeRepo = JokeRepo.get(getActivity());
+        List<Joke> mJokes = jokeRepo.getJokes();
+        for (Joke joke : mJokes) {
+            joke.setCompleted(false);
+        }
+    }
 
     private void updateNumJokes() {
         JokeRepo jokeRepo = JokeRepo.get(getActivity());
